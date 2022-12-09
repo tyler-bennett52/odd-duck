@@ -1,0 +1,53 @@
+nav {
+  font-size: 2.5rem;
+  border-bottom: 2px black solid;
+  padding-left: 1em;
+  background-color: rgb(5, 68, 5);
+  color: yellow;
+}
+
+main {
+  /* border: 2px red solid; */
+  width: 100%;
+}
+
+.results {
+  border: 1px black solid;
+  width: 20%;
+  height: 75vh;
+  margin: 25px 10px;
+  float: left;
+  text-align: center;
+}
+
+.main-photo {
+  border: 2px rgb(5, 68, 5) solid;
+  width: 30%;
+}
+
+.container {
+  display: flex;
+  margin: 25px auto;
+  justify-content: space-between;
+  width: 75%;
+}
+
+img {
+  width: 100%;
+}
+
+.main-text {
+  font-size: 1.5rem;
+  width: 75%;
+  position: absolute;
+  right: 25px;
+  margin-top: 5%;
+}
+
+footer {
+  height: 7vh;
+  width: 100%;
+  background-color: rgb(103, 65, 16);
+  position: fixed;
+  bottom: 0;
+}
