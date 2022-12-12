@@ -6,6 +6,11 @@ nav {
   color: yellow;
 }
 
+h1{
+  margin: 0 auto;
+  border: 2px black solid;
+}
+
 main {
   /* border: 2px red solid; */
   width: 100%;
