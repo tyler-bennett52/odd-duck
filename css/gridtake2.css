@@ -3,6 +3,10 @@
   --clr-secondary: rgb(205, 133, 63);
   --clr-accent: rgb(255, 255, 0);
 }
+
+body{
+  background-color: #ddd;
+}
 /* ********** NAV BAR ************* */
 nav {
   background-color: var(--clr-main);
@@ -41,16 +45,27 @@ h1 {
 img {
   width: 320px;
   height: 375px;
+  border: 3px black solid;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  transition: 1s;
+}
+
+img:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  cursor: pointer;
 }
 
 .main-text {
   grid-area: p-text;
   font-size: 1.7rem;
+  border: 2px var(--clr-main) solid;
+  padding: 1em;
 }
-
 
 .results {
   grid-area: results;
+  border: 2px var(--clr-main) solid;
+  padding: 1em;
 }
 /* ******** FOOTER *********************/
 footer {
@@ -62,6 +77,26 @@ footer {
   bottom: 0;
 }
  /****** UTILITY CLASSES******************* */
- .hide {
-  display: none;
- }
+.hide{display: none;}
+
+button {
+  background-color: var(--clr-main);
+  color: white;
+  border: 1px solid var(--clr-secondary);
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+  width: 100%;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 25px;
+  text-align: center;
+  transform: translateY(0);
+  transition: transform 150ms, box-shadow 150ms;
+  touch-action: manipulation;
+}
+
+button:hover {
+  box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+  transform: translateY(-2px);
+}
+

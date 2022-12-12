@@ -62,6 +62,7 @@ function showResults () {
 
 
 function render(event) {
+  choice2.innerText = 'Choice 2';
   let imgClicked = event.target.alt;
   randomSelection1 = getRandomIndex();
   randomSelection2 = getRandomIndex();
