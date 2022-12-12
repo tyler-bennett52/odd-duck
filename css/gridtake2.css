@@ -1,0 +1,54 @@
+:root {
+  --clr-main: rgb(4, 90, 4);
+  --clr-secondary: rgb(205, 133, 63);
+  --clr-accent: rgb(255, 255, 0);
+}
+/* ********** NAV BAR ************* */
+nav {
+  background-color: var(--clr-main);
+  font-size: 1.8rem;
+  color: rgb(255, 255, 0);
+  border-bottom: 3px var(--clr-secondary) solid;
+}
+
+h1 {
+  margin-left: 3%;
+}
+
+span {
+  text-align: center;
+  margin-left: 10%;
+  color: var(--clr-accent);
+}
+/* ************ GRID AREA / MAIN CONTENT ******************* */
+.grid-container {
+  width: 95%;
+  margin: 2% auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(300px, auto);
+  row-gap: 10%;
+  column-gap: 2%;
+  grid-template-areas:
+    "results photo1 photo2 photo3"
+    "results p-text p-text p-text";
+}
+
+.main-text {
+  grid-area: p-text;
+  font-size: 1.7rem;
+}
+
+
+.results {
+  grid-area: results;
+}
+/* ******** FOOTER *********************/
+footer {
+  height: 5vh;
+  width: 100%;
+  background-color: var(--clr-main);
+  border-top: 3px var(--clr-secondary) solid;
+  position: fixed;
+  bottom: 0;
+}
