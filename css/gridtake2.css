@@ -15,9 +15,9 @@ h1 {
   margin-left: 3%;
 }
 
-span {
+#title-span {
   text-align: center;
-  margin-left: 10%;
+  margin-left: 16%;
   color: var(--clr-accent);
 }
 /* ************ GRID AREA / MAIN CONTENT ******************* */
@@ -39,7 +39,7 @@ span {
 }
 
 img {
-  width: 300px;
+  width: 320px;
   height: 375px;
 }
 
