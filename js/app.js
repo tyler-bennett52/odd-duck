@@ -5,22 +5,19 @@ const randomIndices = [0, 0, 0];
 let randomSelection1 = 0;
 let randomSelection2 = 0;
 let randomSelection3 = 0;
+let roundsLeft = 25;
 
 // ************************* DOM ITEMS **********************************
 const imgChoices = document.querySelectorAll('img');
-const startBtn = document.querySelector('button');
-
+const resultsBtn = document.querySelector('.hide');
+const results = document.querySelector('.results');
+const choice2 = document.querySelector('#Choice-2');
 
 // ************************ HELPER FUNCTIONS ********************************
 const getRandomIndex = () => {
   return Math.floor(Math.random() * allProducts.length);
 };
-
-
-getRandomIndex();
-
-let roundsLeft = 25;
-
+// **************** CREATE CLASS, BUILD OBJECTS *************************
 class Product {
   constructor(name, src) {
     this.name = name;
@@ -30,9 +27,6 @@ class Product {
     allProducts.push(this);
   }
 }
-
-
-
 const bag = new Product('bag', 'img/bag.jpg');
 const banana = new Product('banana', 'img/banana.jpg');
 const bathroom = new Product('bathroom', 'img/bathroom.jpg');
@@ -53,15 +47,22 @@ const unicorn = new Product('unicorn', 'img/unicorn.jpg');
 const waterCan = new Product('water-can', 'img/water-can.jpg');
 const wineGlass = new Product('wine-glass', 'img/wine-glass.jpg');
 
-console.log(allProducts);
-// ************ TEST OF IMG SOURCES ************************
-// for (let product of allProducts) {
-//   let tempElement = document.createElement('img');
-//   tempElement.src = product.src;
-//   body.appendChild(tempElement);
-// }
+// **************** GAME FUNCTIONS ***********************
+function showResults () {
+  results.innerText = '';
+  let resultsData = document.createElement('ul');
+  results.appendChild(resultsData);
+  for (let item of allProducts) {
+    let tempElement = document.createElement('li');
+    tempElement.innerText = `${item.name}: #Picked-${item.timesPicked}/#Shown ${item.timesShown} = ${item.timesPicked/item.timesShown} Click %`;
+    resultsData.appendChild(tempElement);
+  }
 
-function render() {
+}
+
+
+function render(event) {
+  let imgClicked = event.target.alt;
   randomSelection1 = getRandomIndex();
   randomSelection2 = getRandomIndex();
   while (randomSelection2 === randomSelection1) {
@@ -72,19 +73,34 @@ function render() {
     randomSelection3 = getRandomIndex();
   }
   imgChoices[0].src = allProducts[randomSelection1].src;
+  imgChoices[0].alt = allProducts[randomSelection1].name;
   imgChoices[1].src = allProducts[randomSelection2].src;
+  imgChoices[1].alt = allProducts[randomSelection2].name;
   imgChoices[2].src = allProducts[randomSelection3].src;
+  imgChoices[2].alt = allProducts[randomSelection3].name;
 
+  allProducts[randomSelection1].timesShown++;
+  allProducts[randomSelection2].timesShown++;
+  allProducts[randomSelection3].timesShown++;
+
+  for (let item of allProducts) {
+    if (imgClicked === item.name) {
+      item.timesPicked++;
+      break;
+    }
+  }
   roundsLeft--;
   if (roundsLeft === 0) {
     for (let img of imgChoices) {
       img.removeEventListener('click', render);
       img.src = 'https://place-hold.it/300x375/ddd';
+      // results.innerText = 'Press the button below to view your results.';
+      resultsBtn.classList.toggle('hide');
+      resultsBtn.addEventListener('click', showResults);
     }
   }
 }
-
+// **************** EXECUTABLE CODE *************************
 for (let img of imgChoices) {
   img.addEventListener('click', render);
-
 }

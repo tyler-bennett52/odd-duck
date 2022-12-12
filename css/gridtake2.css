@@ -61,3 +61,7 @@ footer {
   position: fixed;
   bottom: 0;
 }
+ /****** UTILITY CLASSES******************* */
+ .hide {
+  display: none;
+ }
