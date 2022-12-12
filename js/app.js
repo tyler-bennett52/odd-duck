@@ -94,7 +94,8 @@ function render(event) {
   if (roundsLeft === 0) {
     for (let img of imgChoices) {
       img.removeEventListener('click', render);
-      img.src = 'https://place-hold.it/300x375/ddd';
+      img.src = '';
+      img.alt = 'Game Over';
       // results.innerText = 'Press the button below to view your results.';
       resultsBtn.classList.toggle('hide');
       resultsBtn.addEventListener('click', showResults);
