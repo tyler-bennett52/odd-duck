@@ -31,7 +31,7 @@ h1 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   /* grid-auto-rows: minmax(300px, auto); */
-  row-gap: 10%;
+  row-gap: 5%;
   column-gap: 2%;
   grid-template-areas:
     "results photo1 photo2 photo3"
@@ -61,6 +61,11 @@ img:hover {
   font-size: 1.7rem;
   border: 2px var(--clr-main) solid;
   padding: 1em;
+  margin-bottom: 5%;
+}
+
+canvas{
+  width: 100%;
 }
 
 .results {
