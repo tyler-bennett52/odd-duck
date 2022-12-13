@@ -1,7 +1,8 @@
 'use strict';
 // const imageSourceArray = ['img/bag.jpg', 'img/banana.jpg', 'img/bathroom.jpg', 'img/boots.jpg', 'img/breakfast.jpg', 'img/bubblegum.jpg', 'img/chair.jpg', 'img/cthulu.jpg', 'img/dog-duck.jpg', 'img/dragon.jpg', 'img/pen.jpg', 'img/pet-sweep.jpg', 'img/scissors.jpg', 'img/shark.jpg', 'img/sweep.jpg', 'img/tauntaun.jpg', 'img/unicorn.jpg', 'img/water-can.jpg', 'img/wine=glass.jpg'];
 const allProducts = [];
-const randomIndices = [0, 0, 0];
+const lastRoundIndices = [];
+const thisRoundIndices = [];
 let randomSelection1 = 0;
 let randomSelection2 = 0;
 let randomSelection3 = 0;
@@ -12,7 +13,9 @@ const imgChoices = document.querySelectorAll('img');
 const resultsBtn = document.querySelector('.hide');
 const results = document.querySelector('.results');
 const choice2 = document.querySelector('#Choice-2');
-
+const mainText = document.querySelector('#main-text');
+const canvasContainer = document.querySelector('.canvas');
+const canvas = document.querySelector('canvas');
 // ************************ HELPER FUNCTIONS ********************************
 const getRandomIndex = () => {
   return Math.floor(Math.random() * allProducts.length);
@@ -48,19 +51,45 @@ const waterCan = new Product('water-can', 'img/water-can.jpg');
 const wineGlass = new Product('wine-glass', 'img/wine-glass.jpg');
 
 // **************** GAME FUNCTIONS ***********************
-function showResults () {
+function showChart() {
+  let chartObject = {
+    type: 'bar',
+    data: {
+      labels: allProducts.map(product => product.name),
+      datasets: [{
+        label: '# of Views',
+        data: allProducts.map(product => product.timesShown),
+        borderWidth: 1
+      },
+      {
+        label: '# of Votes',
+        data: allProducts.map(product => product.timesPicked),
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  };
+  new Chart(canvas, chartObject);
+}
+function showResults() {
   results.innerText = '';
+  mainText.classList.toggle('hide');
+  canvasContainer.classList.toggle('hide');
   let resultsData = document.createElement('ul');
   results.appendChild(resultsData);
   for (let item of allProducts) {
     let tempElement = document.createElement('li');
-    tempElement.innerText = `${item.name}: #Picked-${item.timesPicked}/#Shown ${item.timesShown} = ${item.timesPicked/item.timesShown} Click %`;
+    tempElement.innerText = `${item.name}: #Picked-${item.timesPicked}/#Shown ${item.timesShown} = ${item.timesPicked / item.timesShown} Click %`;
     resultsData.appendChild(tempElement);
   }
-
+  showChart();
 }
-
-
 function render(event) {
   choice2.innerText = 'Choice 2';
   let imgClicked = event.target.alt;
