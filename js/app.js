@@ -1,11 +1,8 @@
 'use strict';
-// const imageSourceArray = ['img/bag.jpg', 'img/banana.jpg', 'img/bathroom.jpg', 'img/boots.jpg', 'img/breakfast.jpg', 'img/bubblegum.jpg', 'img/chair.jpg', 'img/cthulu.jpg', 'img/dog-duck.jpg', 'img/dragon.jpg', 'img/pen.jpg', 'img/pet-sweep.jpg', 'img/scissors.jpg', 'img/shark.jpg', 'img/sweep.jpg', 'img/tauntaun.jpg', 'img/unicorn.jpg', 'img/water-can.jpg', 'img/wine=glass.jpg'];
+
 const allProducts = [];
 let lastRoundIndices = [];
 let thisRoundIndices = [];
-let randomSelection1 = 0;
-let randomSelection2 = 0;
-let randomSelection3 = 0;
 let roundsLeft = 25;
 
 // ************************* DOM ITEMS **********************************
@@ -101,19 +98,16 @@ function render(event) {
       tempIndex = getRandomIndex();
     } thisRoundIndices.push(tempIndex);
   }
-  randomSelection1 = thisRoundIndices[0];
-  randomSelection2 = thisRoundIndices[1];
-  randomSelection3 = thisRoundIndices[2];
-  imgChoices[0].src = allProducts[randomSelection1].src;
-  imgChoices[0].alt = allProducts[randomSelection1].name;
-  imgChoices[1].src = allProducts[randomSelection2].src;
-  imgChoices[1].alt = allProducts[randomSelection2].name;
-  imgChoices[2].src = allProducts[randomSelection3].src;
-  imgChoices[2].alt = allProducts[randomSelection3].name;
-
-  allProducts[randomSelection1].timesShown++;
-  allProducts[randomSelection2].timesShown++;
-  allProducts[randomSelection3].timesShown++;
+  imgChoices[0].src = allProducts[thisRoundIndices[0]].src;
+  imgChoices[0].alt = allProducts[thisRoundIndices[0]].name;
+  imgChoices[1].src = allProducts[thisRoundIndices[1]].src;
+  imgChoices[1].alt = allProducts[thisRoundIndices[1]].name;
+  imgChoices[2].src = allProducts[thisRoundIndices[2]].src;
+  imgChoices[2].alt = allProducts[thisRoundIndices[2]].name;
+  
+  allProducts[thisRoundIndices[0]].timesShown++;
+  allProducts[thisRoundIndices[1]].timesShown++;
+  allProducts[thisRoundIndices[2]].timesShown++;
 
   for (let item of allProducts) {
     if (imgClicked === item.name) {
