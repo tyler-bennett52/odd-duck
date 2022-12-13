@@ -1,8 +1,8 @@
 'use strict';
 // const imageSourceArray = ['img/bag.jpg', 'img/banana.jpg', 'img/bathroom.jpg', 'img/boots.jpg', 'img/breakfast.jpg', 'img/bubblegum.jpg', 'img/chair.jpg', 'img/cthulu.jpg', 'img/dog-duck.jpg', 'img/dragon.jpg', 'img/pen.jpg', 'img/pet-sweep.jpg', 'img/scissors.jpg', 'img/shark.jpg', 'img/sweep.jpg', 'img/tauntaun.jpg', 'img/unicorn.jpg', 'img/water-can.jpg', 'img/wine=glass.jpg'];
 const allProducts = [];
-const lastRoundIndices = [];
-const thisRoundIndices = [];
+let lastRoundIndices = [];
+let thisRoundIndices = [];
 let randomSelection1 = 0;
 let randomSelection2 = 0;
 let randomSelection3 = 0;
@@ -93,15 +93,17 @@ function showResults() {
 function render(event) {
   choice2.innerText = 'Choice 2';
   let imgClicked = event.target.alt;
-  randomSelection1 = getRandomIndex();
-  randomSelection2 = getRandomIndex();
-  while (randomSelection2 === randomSelection1) {
-    randomSelection2 = getRandomIndex();
+  lastRoundIndices = thisRoundIndices;
+  thisRoundIndices = [];
+  let tempIndex = getRandomIndex();
+  for (let i = 3; i > 0; i--) {
+    while (lastRoundIndices.includes(tempIndex) || thisRoundIndices.includes(tempIndex)) {
+      tempIndex = getRandomIndex();
+    } thisRoundIndices.push(tempIndex);
   }
-  randomSelection3 = getRandomIndex();
-  while (randomSelection3 === randomSelection2 || randomSelection3 === randomSelection1) {
-    randomSelection3 = getRandomIndex();
-  }
+  randomSelection1 = thisRoundIndices[0];
+  randomSelection2 = thisRoundIndices[1];
+  randomSelection3 = thisRoundIndices[2];
   imgChoices[0].src = allProducts[randomSelection1].src;
   imgChoices[0].alt = allProducts[randomSelection1].name;
   imgChoices[1].src = allProducts[randomSelection2].src;
