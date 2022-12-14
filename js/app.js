@@ -126,7 +126,7 @@ function render(event) {
   if (roundsLeft === 0) {
     for (let img of imgChoices) {
       img.removeEventListener('click', render);
-      img.src = '';
+      img.src = 'https://via.placeholder.com/550/045a04/FFFF00/?text=Game Over';
       img.alt = 'Game Over';
       resultsBtn.classList.toggle('hide');
       resultsBtn.addEventListener('click', showResults);

@@ -1,7 +1,7 @@
 :root {
-  --clr-main: rgb(4, 90, 4);
+  --clr-main: #045a04;
   --clr-secondary: rgb(205, 133, 63);
-  --clr-accent: rgb(255, 255, 0);
+  --clr-accent: #ffff00;
 }
 
 body{
@@ -45,7 +45,7 @@ h1 {
 img {
   width: 320px;
   height: 375px;
-  border: 3px black solid;
+  border: 3px var(--clr-main) solid;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   transition: .5s;
   text-align: center;
