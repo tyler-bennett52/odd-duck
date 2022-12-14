@@ -4,7 +4,7 @@ const allProducts = [];
 let lastRoundIndices = [];
 let thisRoundIndices = [];
 let roundsLeft = 25;
-const oldProducts = JSON.parse(localStorage.getItem("allProducts"));
+const oldProducts = JSON.parse(localStorage.getItem('allProducts'));
 // ************************* DOM ITEMS **********************************
 const imgChoices = document.querySelectorAll('img');
 const resultsBtn = document.querySelector('.hide');
