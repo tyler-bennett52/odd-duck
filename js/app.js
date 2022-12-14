@@ -4,7 +4,7 @@ const allProducts = [];
 let lastRoundIndices = [];
 let thisRoundIndices = [];
 let roundsLeft = 25;
-
+const oldProducts = JSON.parse(localStorage.getItem("allProducts"));
 // ************************* DOM ITEMS **********************************
 const imgChoices = document.querySelectorAll('img');
 const resultsBtn = document.querySelector('.hide');
@@ -46,6 +46,12 @@ const tauntaun = new Product('tauntaun', 'img/tauntaun.jpg');
 const unicorn = new Product('unicorn', 'img/unicorn.jpg');
 const waterCan = new Product('water-can', 'img/water-can.jpg');
 const wineGlass = new Product('wine-glass', 'img/wine-glass.jpg');
+if (oldProducts) {
+  for (let i = 0; i < allProducts.length; i++) {
+    allProducts[i].timesShown = oldProducts[i].timesShown;
+    allProducts[i].timesPicked = oldProducts[i].timesPicked;
+  }
+}
 
 // **************** GAME FUNCTIONS ***********************
 function showChart() {
