@@ -62,11 +62,13 @@ function showChart() {
       datasets: [{
         label: '# of Views',
         data: allProducts.map(product => product.timesShown),
-        borderWidth: 1
+        backgroundColor: ['rgb(4, 90, 4)'],
+        borderWidth: 2
       },
       {
         label: '# of Votes',
         data: allProducts.map(product => product.timesPicked),
+        backgroundColor: ['rgb(255, 255, 0)'],
         borderWidth: 1
       }]
     },

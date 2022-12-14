@@ -1,7 +1,7 @@
 :root {
-  --clr-main: #045a04;
+  --clr-main: rgb(4, 90, 4);
   --clr-secondary: rgb(205, 133, 63);
-  --clr-accent: #ffff00;
+  --clr-accent: rgb(255, 255, 0);
 }
 
 body{
