@@ -90,7 +90,7 @@ function showResults() {
   results.appendChild(resultsData);
   for (let item of allProducts) {
     let tempElement = document.createElement('li');
-    tempElement.innerText = `${item.name}: #Picked-${item.timesPicked}/#Shown ${item.timesShown} = ${item.timesPicked / item.timesShown} Click %`;
+    tempElement.innerText = `${item.name}: Picked-${item.timesPicked}/Shown ${item.timesShown}`;
     resultsData.appendChild(tempElement);
   }
   showChart();

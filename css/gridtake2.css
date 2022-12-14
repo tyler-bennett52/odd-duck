@@ -43,8 +43,8 @@ h1 {
 }
 
 img {
-  width: 320px;
-  height: 375px;
+  width: 400px;
+  height: 385px;
   border: 3px var(--clr-main) solid;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   transition: .5s;
@@ -72,10 +72,14 @@ canvas{
   grid-area: results;
   border: 2px var(--clr-main) solid;
   padding: 1em;
+  font-size: 1.3rem;
+  line-height: 2.3em;
 }
 /* ******** FOOTER *********************/
 footer {
   height: 5vh;
+  color: var(--clr-secondary);
+  text-align: center;
   width: 100%;
   background-color: var(--clr-main);
   border-top: 3px var(--clr-secondary) solid;
