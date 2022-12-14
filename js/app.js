@@ -86,6 +86,7 @@ function showResults() {
     resultsData.appendChild(tempElement);
   }
   showChart();
+  localStorage.setItem('allProducts', JSON.stringify(allProducts));
 }
 function render(event) {
   choice2.innerText = 'Choice 2';
@@ -121,7 +122,6 @@ function render(event) {
       img.removeEventListener('click', render);
       img.src = '';
       img.alt = 'Game Over';
-      // results.innerText = 'Press the button below to view your results.';
       resultsBtn.classList.toggle('hide');
       resultsBtn.addEventListener('click', showResults);
     }
