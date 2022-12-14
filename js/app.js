@@ -4,7 +4,7 @@ const allProducts = [];
 let lastRoundIndices = [];
 let thisRoundIndices = [];
 let roundsLeft = 25;
-
+const oldProducts = JSON.parse(localStorage.getItem("allProducts"));
 // ************************* DOM ITEMS **********************************
 const imgChoices = document.querySelectorAll('img');
 const resultsBtn = document.querySelector('.hide');
@@ -46,6 +46,12 @@ const tauntaun = new Product('tauntaun', 'img/tauntaun.jpg');
 const unicorn = new Product('unicorn', 'img/unicorn.jpg');
 const waterCan = new Product('water-can', 'img/water-can.jpg');
 const wineGlass = new Product('wine-glass', 'img/wine-glass.jpg');
+if (oldProducts) {
+  for (let i = 0; i < allProducts.length; i++) {
+    allProducts[i].timesShown = oldProducts[i].timesShown;
+    allProducts[i].timesPicked = oldProducts[i].timesPicked;
+  }
+}
 
 // **************** GAME FUNCTIONS ***********************
 function showChart() {
@@ -56,11 +62,13 @@ function showChart() {
       datasets: [{
         label: '# of Views',
         data: allProducts.map(product => product.timesShown),
-        borderWidth: 1
+        backgroundColor: ['rgb(4, 90, 4)'],
+        borderWidth: 2
       },
       {
         label: '# of Votes',
         data: allProducts.map(product => product.timesPicked),
+        backgroundColor: ['rgb(255, 255, 0)'],
         borderWidth: 1
       }]
     },
@@ -86,6 +94,7 @@ function showResults() {
     resultsData.appendChild(tempElement);
   }
   showChart();
+  localStorage.setItem('allProducts', JSON.stringify(allProducts));
 }
 function render(event) {
   choice2.innerText = 'Choice 2';
@@ -119,9 +128,8 @@ function render(event) {
   if (roundsLeft === 0) {
     for (let img of imgChoices) {
       img.removeEventListener('click', render);
-      img.src = '';
+      img.src = 'https://via.placeholder.com/550/045a04/FFFF00/?text=Game Over';
       img.alt = 'Game Over';
-      // results.innerText = 'Press the button below to view your results.';
       resultsBtn.classList.toggle('hide');
       resultsBtn.addEventListener('click', showResults);
     }
